@@ -10,6 +10,7 @@ import {
   OWNER_ADDRESS,
   SMART_CONTRACT_ABI,
   SMART_CONTRACT_ADDRESS,
+  QUICKNODE_HTTP_URL,
 } from "../../constants";
 
 // const ipfsURI = "https://ipfs.io/ipfs/";
@@ -61,7 +62,8 @@ export async function getStaticPaths() {
   //     provider = new ethers.providers.JsonRpcProvider();
   //   } else if (process.env.ENVIRONMENT === "testnet") {
   provider = new ethers.providers.JsonRpcProvider(
-    "https://rpc-mumbai.matic.today"
+    // "https://rpc-mumbai.matic.today"
+    QUICKNODE_HTTP_URL
   );
   //   } else {
   //     provider = new ethers.providers.JsonRpcProvider("https://polygon-rpc.com/");

@@ -1,4 +1,7 @@
 export const OWNER_ADDRESS = "0xc8A81E39a7c656Be15FA062e5D57daD60304fE0D";
+export const QUICKNODE_HTTP_URL =
+  "https://delicate-cool-firefly.matic-testnet.discover.quiknode.pro/dbcca083d8775dc1f2dd9540c63768d0f55a6f68/";
+
 export const SMART_CONTRACT_ADDRESS =
   "0x934704487f231d9D94EDdFf05cA3d5660C655578";
 export const SMART_CONTRACT_ABI = [
