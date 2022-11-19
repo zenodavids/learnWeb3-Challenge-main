@@ -1,6 +1,6 @@
 html,
 body {
-  background-color: #eff5f5;
+  background-color: #9ba17b;
   padding: 0;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
@@ -9,6 +9,10 @@ body {
 
 .EasyMDEContainer .editor-toolbar {
   border: none;
+}
+.logo{
+  color: #61764b;
+  font-size: 2rem;
 }
 
 .EasyMDEContainer .CodeMirror {
@@ -35,3 +39,159 @@ blockquote {
   padding-left: 20px;
   margin-left: 0px;
 }
+/* newsticker */
+#ticker {
+  background-color: #fff;
+  overflow: auto;
+  height: 30px;
+  vertical-align: middle;
+  width: 100%;
+  box-sizing: border-box;
+  position: relative;
+  overflow: hidden;
+}
+#ticker ul {
+  display: block;
+  padding: 0px;
+  line-height: 30px;
+  vertical-align: middle;
+  margin: 0px;
+  list-style: none;
+  white-space: nowrap;
+  /*  news speed  */
+  animation: scroll 20s linear 0s infinite;
+  position: absolute;
+}
+#ticker ul li {
+  display: inline-block;
+  white-space: normal;
+  margin-left: 20px;
+  color: #61764b;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+#ticker .title {
+  background-color: red;
+  color: #fff;
+  position: absolute;
+  left: 0;
+  font-weight: bold;
+  border-right: 2px solid #fff;
+  top: 0;
+  display: block;
+  height: 30px;
+  vertical-align: middle;
+  line-height: 30px;
+  padding-left: 10px;
+  padding-right: 10px;
+  z-index: 10;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.8);
+}
+@keyframes scroll {
+  from {
+    transform: translate(100%, 0);
+  }
+
+  to {
+    transform: translate(-150%, 0);
+  }
+}
+
+/* Custom CSS */
+#ticker {
+  width: 100%;
+  margin: auto;
+}
+#ticker ul {
+  width: 100%;
+}
+a {
+  text-align: center;
+  display: block;
+  margin-top: 10px;
+  text-decoration: none;
+}
+/* newsticker */
+
+/* start of _app.js */
+.accountInfo {
+  width: 100%;
+  display: flex;
+  color: #61764b;
+  font-size: 1.5rem;
+  font-weight: 700;
+  flex: 1;
+  justify-content: flex-end;
+  font-size: 12px;
+}
+
+.container {
+  padding: 40px;
+}
+
+.linkContainer {
+  padding: 30px 60px;
+  background-color: #fad6a5;
+}
+
+.nav {
+  background-color: #fad6a5;
+}
+
+.header {
+  display: flex;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.075);
+  padding: 20px 30px;
+}
+
+.description {
+  margin: 0;
+  color: #999999;
+}
+
+.titleContainer {
+  display: flex;
+  flex-direction: column;
+  padding-left: 15px;
+  color: #61764b;
+}
+
+.title {
+  margin-left: 30px;
+  font-weight: 500;
+  margin: 0;
+}
+
+.buttonContainer {
+  width: 100%;
+  display: flex;
+  flex: 1;
+  justify-content: flex-end;
+}
+
+.buttonStyle {
+  background-color: #fafafa;
+  outline: none;
+  border: none;
+  font-size: 18px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  text-transform: uppercase;
+  font-weight: 700;
+  padding: 16px 40px;
+  border-radius: 15px;
+  cursor: pointer;
+  color: #61764b;
+  -webkit-box-shadow: 0px 1px 15px -3px rgba(97, 118, 75, 1);
+  -moz-box-shadow: 0px 1px 15px -3px rgba(97, 118, 75, 1);
+  box-shadow: 0px 1px 15px -3px rgba(97, 118, 75, 1);
+}
+
+.link {
+  margin: 0px 40px 0px 0px;
+  color: #61764b;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+/* end of _app.js */

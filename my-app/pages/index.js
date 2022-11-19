@@ -4,6 +4,11 @@ import { useRouter } from "next/router";
 import { ethers } from "ethers";
 import Link from "next/link";
 import { AccountContext } from "../context";
+import "../styles/Home.module.css"
+import { MdArticle } from "react-icons/md";
+import { TiArrowRightThick } from "react-icons/ti";
+
+
 
 import {
   OWNER_ADDRESS,
@@ -31,8 +36,14 @@ export default function Home(props) {
           posts.map((post, index) => (
             <Link href={`post/${post[2]}`} key={index}>
               <div className={linkStyle}>
-                <p className={postTitle}>{post[1]}</p>
-                <div className={arrowContainer}></div>
+                <p className={postTitle}>
+                  {<MdArticle />} {post[1].slice(0, 20)}
+                </p>
+
+                <div className={arrowContainer}>
+                  <span style={{ fontSize: "16px" }}> ...Read more.</span>
+                  {<TiArrowRightThick />}
+                </div>
               </div>
             </Link>
           ))
@@ -43,7 +54,7 @@ export default function Home(props) {
           //  if the signed in user is the account owner, render a button
           //  to create the first post
           <button className={buttonStyle} onClick={navigate}>
-            Create your first post
+            Create your first post {<TiArrowRightThick />}
           </button>
         )}
       </div>
@@ -96,21 +107,33 @@ const arrowContainer = css`
   flex: 1;
   justify-content: flex-end;
   padding-right: 20px;
+  padding-top: 30px;
+  color: #fff;
+  font-size: 1.5rem;
+
 `;
 
 const postTitle = css`
+  border-left: 7px solid transparent;
+  border-image: linear-gradient(#fad6a5, #cfb997, #8b7e74, #9ba17b, #fad6a5) 1;
   font-size: 30px;
+  text-transform: capitalize;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   font-weight: bold;
   cursor: pointer;
+  color: #fff;
   margin: 0;
   padding: 20px;
+  text-decoration: none;
 `;
 
 const linkStyle = css`
-  border: 1px solid #ddd;
+  border-left: 7px solid transparent;
+  border-image: linear-gradient(#fad6a5, #cfb997, #8b7e74, #9ba17b, #fad6a5) 1;
   margin-top: 20px;
   border-radius: 8px;
   display: flex;
+
 `;
 
 const postList = css`

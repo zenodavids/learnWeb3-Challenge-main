@@ -8,6 +8,8 @@ import WalletConnectProvider from "@walletconnect/web3-provider";
 import { AccountContext } from "../context.js";
 import { OWNER_ADDRESS } from "../constants";
 import "easymde/dist/easymde.min.css";
+import { GiWallet } from "react-icons/gi";
+import { SiWebmoney } from "react-icons/si";
 
 function MyApp({ Component, pageProps }) {
   /* create local state to save account information after signin */
@@ -43,42 +45,61 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <div>
-      <nav className={nav}>
-        <div className={header}>
-          <Link href='/'>
+      <nav className='nav'>
+        <div className='header'>
+          <Link className="logo" href='/'>
+            {<SiWebmoney/>}
             {/* <img src='/logo.svg' alt='React Logo' style={{ width: "50px" }} /> */}
           </Link>
           <Link href='/'>
-            <div className={titleContainer}>
-              {/* <h2 className={title}>Web3 Blog</h2> */}
-              <p className={description}>WEB3</p>
+            <div className='titleContainer'>
+              <h2 className='title'>Web3 Blog</h2>
+              <p className='description'>Home</p>
             </div>
           </Link>
-          <Link href='/' className={link}>
-            Home
-          </Link>
+          {/* <Link href='/' className='link'>blog</Link> */}
           {
             //  if the signed in user is the contract owner, we
             //  show the nav link to create a new post
             account === OWNER_ADDRESS && (
-              <Link href='/create-post' className={link}>
+              <Link href='/create-post' className='link'>
                 Create Post
               </Link>
             )
           }
           {!account && (
-            <div className={buttonContainer}>
-              <button className={buttonStyle} onClick={connect}>
-                Connect
+            <div className='buttonContainer'>
+              <button className='buttonStyle' onClick={connect}>
+                {<GiWallet/> } Connect
               </button>
             </div>
           )}
 
-          {account && <p className={accountInfo}>{account}</p>}
+          {account && (
+            <p className='accountInfo'>{`${account.slice(
+              0,
+              4
+            )}...${account.slice(38)}`}</p>
+          )}
         </div>
-        <div className={linkContainer}></div>
+        {/*  newsTicker */}
+        <div id='ticker'>
+          <div className='title'>NEWS</div>
+          <ul>
+            <li className='tickerItem'>HIMARK TO INTRODUCE NFTS  {<SiWebmoney/>}</li>
+            <li className='tickerItem'>
+              GRANDIDA SET TO PAY FIRST SET OF EMPLOYEES  {<SiWebmoney/>}
+            </li>
+            <li className='tickerItem'>
+              WEB3 GURUS SET TO OVERTAKE THE WEB3 BUSINESS  {<SiWebmoney/>}
+            </li>
+            <li className='tickerItem'>Ademola to win best manager of the year  {<SiWebmoney/>}</li>
+            <li className='tickerItem'>BEE AND SOPHIE TAKEN TO COURT FOR NOT GIVING ZEE FOOD ON TIME  {<SiWebmoney/>}</li>
+          </ul>
+        </div>
+        {/* End of newsTicker */}
       </nav>
-      <div className={container}>
+      <div className='container'>
         <AccountContext.Provider value={account}>
           <Component {...pageProps} />
         </AccountContext.Provider>
@@ -154,5 +175,6 @@ const link = css`
   font-size: 16px;
   font-weight: 400;
 `;
+
 
 export default MyApp;

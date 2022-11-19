@@ -108,6 +108,64 @@
   margin-left: 0.5rem;
 }
 
+/* start of index.js */
+.arrowContainer {
+  display: flex;
+  flex: 1;
+  justify-content: flex-end;
+  padding-right: 20px;
+}
+
+.postTitle {
+  font-size: 30px;
+  font-weight: bold;
+  cursor: pointer;
+  margin: 0;
+  padding: 20px;
+  text-decoration: none;
+}
+
+.linkStyle {
+  border: 1px solid #ddd;
+  margin-top: 20px;
+  border-radius: 8px;
+  display: flex;
+}
+
+.postList {
+  width: 700px;
+  margin: 0 auto;
+  padding-top: 50px;
+}
+
+.containerIndexJs {
+  display: flex;
+  justify-content: center;
+}
+
+.buttonStyle {
+  margin-top: 100px;
+  background-color: #fafafa;
+  outline: none;
+  border: none;
+  font-size: 44px;
+  padding: 20px 70px;
+  border-radius: 15px;
+  cursor: pointer;
+  box-shadow: 7px 7px rgba(0, 0, 0, 0.1);
+}
+
+.arrow {
+  width: 35px;
+  margin-left: 30px;
+}
+
+.smallArrow {
+  width: 25px;
+}
+
+/* end of index.js */
+
 @media (max-width: 600px) {
   .grid {
     width: 100%;
