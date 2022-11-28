@@ -1,31 +1,29 @@
-import { css } from "@emotion/css";
-import { useContext } from "react";
-import { useRouter } from "next/router";
-import { ethers } from "ethers";
-import Link from "next/link";
-import { AccountContext } from "../context";
-import "../styles/Home.module.css"
-import { MdArticle } from "react-icons/md";
-import { TiArrowRightThick } from "react-icons/ti";
-
-
+import { css } from '@emotion/css'
+import { useContext } from 'react'
+import { useRouter } from 'next/router'
+import { ethers } from 'ethers'
+import Link from 'next/link'
+import { AccountContext } from '../context'
+import '../styles/Home.module.css'
+import { MdArticle } from 'react-icons/md'
+import { TiArrowRightThick } from 'react-icons/ti'
 
 import {
   OWNER_ADDRESS,
   SMART_CONTRACT_ABI,
   SMART_CONTRACT_ADDRESS,
   QUICKNODE_HTTP_URL,
-} from "../constants";
+} from '../constants'
 
 export default function Home(props) {
   /* posts are fetched server side and passed in as props */
   /* see getServerSideProps */
-  const { posts } = props;
-  const account = useContext(AccountContext);
+  const { posts } = props
+  const account = useContext(AccountContext)
 
-  const router = useRouter();
+  const router = useRouter()
   async function navigate() {
-    router.push("/create-post");
+    router.push('/create-post')
   }
 
   return (
@@ -36,13 +34,18 @@ export default function Home(props) {
           posts.map((post, index) => (
             <Link href={`post/${post[2]}`} key={index}>
               <div className={linkStyle}>
-                <p className={postTitle}>
-                  {<MdArticle />} {post[1].slice(0, 20)}
-                </p>
+                <p className={postTitle}>{`${post[1].slice(0, 25)}...`}</p>
 
                 <div className={arrowContainer}>
-                  <span style={{ fontSize: "16px" }}> ...Read more.</span>
-                  {<TiArrowRightThick />}
+                  <span
+                    style={{
+                      fontSize: '16px',
+                      textDecoration: 'underline',
+                      color: '#1b1a17',
+                    }}
+                  >
+                    Read more{' '}
+                  </span>
                 </div>
               </div>
             </Link>
@@ -59,21 +62,21 @@ export default function Home(props) {
         )}
       </div>
     </div>
-  );
+  )
 }
 
 /////////////////////////////////
 export async function getServerSideProps() {
   /* here we check to see the current environment variable */
   /* and render a provider based on the environment we're in */
-  let provider;
+  let provider
   // if (process.env.MAINET_ENVIRONMENT === "mainet") {
   //   provider = new ethers.providers.JsonRpcProvider();
   // } else if (process.env.TESTNET_ENVIRONMENT === "testnet") {
   provider = new ethers.providers.JsonRpcProvider(
     // "https://rpc-mumbai.matic.today"
     QUICKNODE_HTTP_URL
-  );
+  )
   // } else {
   //   provider = new ethers.providers.JsonRpcProvider("https://polygon-rpc.com/");
   // }
@@ -92,13 +95,13 @@ export async function getServerSideProps() {
     SMART_CONTRACT_ADDRESS,
     SMART_CONTRACT_ABI,
     provider
-  );
-  const data = await contract.fetchPosts();
+  )
+  const data = await contract.fetchPosts()
   return {
     props: {
       posts: JSON.parse(JSON.stringify(data)),
     },
-  };
+  }
 }
 /////////////////////////////////
 
@@ -108,44 +111,48 @@ const arrowContainer = css`
   justify-content: flex-end;
   padding-right: 20px;
   padding-top: 30px;
-  color: #fff;
+  color: #fecd70;
   font-size: 1.5rem;
-
-`;
+`
 
 const postTitle = css`
-  border-left: 7px solid transparent;
-  border-image: linear-gradient(#fad6a5, #cfb997, #8b7e74, #9ba17b, #fad6a5) 1;
+  border-image: linear-gradient(#fecd70, #fecd70, #fecd70, #fecd70, #fecd70) 1;
   font-size: 30px;
   text-transform: capitalize;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: #1b1a17;
   font-weight: bold;
   cursor: pointer;
-  color: #fff;
-  margin: 0;
-  padding: 20px;
+  margin: 20px;
+  padding: 0 0 0 4px;
   text-decoration: none;
-`;
+`
 
 const linkStyle = css`
   border-left: 7px solid transparent;
-  border-image: linear-gradient(#fad6a5, #cfb997, #8b7e74, #9ba17b, #fad6a5) 1;
+
   margin-top: 20px;
   border-radius: 8px;
   display: flex;
-
-`;
+`
 
 const postList = css`
-  width: 700px;
+  width: 95%;
   margin: 0 auto;
-  padding-top: 50px;
-`;
+  padding: 50px 0;
+  z-index: 10;
+
+  background: rgba(255, 255, 255, 0.22);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(9.1px);
+  -webkit-backdrop-filter: blur(9.1px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+`
 
 const container = css`
   display: flex;
   justify-content: center;
-`;
+`
 
 const buttonStyle = css`
   margin-top: 100px;
@@ -157,13 +164,13 @@ const buttonStyle = css`
   border-radius: 15px;
   cursor: pointer;
   box-shadow: 7px 7px rgba(0, 0, 0, 0.1);
-`;
+`
 
 const arrow = css`
   width: 35px;
   margin-left: 30px;
-`;
+`
 
 const smallArrow = css`
   width: 25px;
-`;
+`
